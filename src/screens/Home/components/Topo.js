@@ -1,34 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import logo from '../../../assets/logo.png';
 import {carregaTopo} from '../../../services/carregarDados';
 
-class Topo extends React.Component {
-  state = {
-    topo: {
-      saudacao: '',
-      legenda: '',
-    },
-  };
+export default function Topo() {
+  const [saudacao, setSaudacao] = useState('');
+  const [legenda, setLegenda] = useState('');
 
-  atualizaTopo() {
-    const topoCarregado = carregaTopo();
-    this.setState({topo: topoCarregado});
-  }
+  useEffect(() => {
+    const topo = carregaTopo();
+    setSaudacao(topo.saudacao);
+    setLegenda(topo.legenda);
+  }, []);
 
-  componentDidMount() {
-    this.atualizaTopo();
-  }
-
-  render() {
-    return (
-      <View style={styles.topoView}>
-        <Image style={styles.imagem} source={logo} />
-        <Text style={styles.textSaudacao}>{this.state.topo.saudacao}</Text>
-        <Text style={styles.legenda}>{this.state.topo.legenda}</Text>
-      </View>
-    );
-  }
+  return (
+    <View style={styles.topoView}>
+      <Image style={styles.imagem} source={logo} />
+      <Text style={styles.textSaudacao}>{saudacao}</Text>
+      <Text style={styles.legenda}>{legenda}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -53,5 +44,3 @@ const styles = StyleSheet.create({
     color: '#A3A3A3',
   },
 });
-
-export default Topo;
