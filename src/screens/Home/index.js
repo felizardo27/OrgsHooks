@@ -3,10 +3,5 @@ import Topo from './components/Topo';
 import Produtores from './components/Produtores';
 
 export default function Home() {
-  return (
-    <>
-      <Topo />
-      <Produtores />
-    </>
-  );
+  return <Produtores topo={Topo} />;
 }
