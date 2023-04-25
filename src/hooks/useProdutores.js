@@ -7,6 +7,9 @@ export default function useProdutores() {
 
   useEffect(() => {
     const produtores = carregaProdutores();
+    produtores.lista.sort(
+      (produtor1, produtor2) => produtor1.distancia - produtor2.distancia,
+    );
     setTitulo(produtores.titulo);
     setLista(produtores.lista);
   }, []);
