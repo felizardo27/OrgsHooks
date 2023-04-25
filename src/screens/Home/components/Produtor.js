@@ -1,15 +1,26 @@
-import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import Estrelas from '../../../components/Estrelas';
 
 export default function Produtor({nome, imagem, distancia, estrelas}) {
+  const [selecionado, setSelecionado] = useState(false);
   return (
-    <View style={styles.CardView}>
+    <TouchableOpacity
+      onPress={() => setSelecionado(!selecionado)}
+      style={styles.CardView}>
       <Image style={styles.imagem} source={imagem} accessibilityLabel={nome} />
       <View style={styles.informacoesView}>
-        <Text style={styles.nome}>{nome}</Text>
+        <View>
+          <Text style={styles.nome}>{nome}</Text>
+          <Estrelas
+            quantidade={estrelas}
+            grande={selecionado}
+            editavel={selecionado}
+          />
+        </View>
         <Text style={styles.distancia}>{distancia}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
