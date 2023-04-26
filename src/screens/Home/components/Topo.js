@@ -1,41 +1,49 @@
-import React, {useEffect, useState} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import logo from '../../../assets/logo.png';
-import {carregaTopo} from '../../../services/carregarDados';
+import useTextos from '../../../hooks/useTextos';
 
-export default function Topo() {
-  const [saudacao, setSaudacao] = useState('');
-  const [legenda, setLegenda] = useState('');
-
-  useEffect(() => {
-    const topo = carregaTopo();
-    setSaudacao(topo.saudacao);
-    setLegenda(topo.legenda);
-  }, []);
+export default function Topo({melhoresProdutores}) {
+  const {boasVindas, legenda, legendaMelhoresProdutores} = useTextos();
 
   return (
-    <View style={styles.topoView}>
-      <Image style={styles.imagem} source={logo} />
-      <Text style={styles.textSaudacao}>{saudacao}</Text>
-      <Text style={styles.legenda}>{legenda}</Text>
-    </View>
+    <>
+      <View style={styles.topo}>
+        <Image source={logo} style={styles.imagem} />
+        <Text style={styles.boasVindas}>
+          {melhoresProdutores ? '' : boasVindas}
+        </Text>
+        <Text style={styles.legenda}>
+          {melhoresProdutores ? legendaMelhoresProdutores : legenda}
+        </Text>
+      </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  topoView: {
+  topo: {
     backgroundColor: '#F6F6F6',
     padding: 16,
+  },
+  compra: {
+    backgroundColor: '#EAF5F3',
+    padding: 16,
+  },
+  compraMensagem: {
+    fontSize: 16,
+    lineHeight: 26,
+    color: '#464646',
   },
   imagem: {
     width: 70,
     height: 28,
   },
-  textSaudacao: {
+  boasVindas: {
     marginTop: 24,
     fontSize: 26,
-    fontWeight: 'bold',
     lineHeight: 42,
+    fontWeight: 'bold',
     color: '#464646',
   },
   legenda: {

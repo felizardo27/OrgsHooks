@@ -1,48 +1,49 @@
-import React, {useMemo, useReducer} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useMemo} from 'react';
+import {View, TouchableOpacity, Text, Image, StyleSheet} from 'react-native';
 import Estrelas from '../../../components/Estrelas';
 
 const distanciaEmMetros = distancia => {
   return `${distancia}m`;
 };
 
-export default function Produtor({nome, imagem, distancia, estrelas}) {
-  const [selecionado, inverteSelecionado] = useReducer(
-    selecionado => !selecionado,
-    false,
-  );
-
+export default function Produtor({
+  nome,
+  imagem,
+  distancia,
+  estrelas,
+  aoPressionar,
+}) {
   const distanciaTexto = useMemo(
     () => distanciaEmMetros(distancia),
     [distancia],
   );
 
   return (
-    <TouchableOpacity onPress={inverteSelecionado} style={styles.CardView}>
-      <Image style={styles.imagem} source={imagem} accessibilityLabel={nome} />
-      <View style={styles.informacoesView}>
+    <TouchableOpacity style={estilos.cartao} onPress={aoPressionar}>
+      <Image source={imagem} style={estilos.imagem} accessibilityLabel={nome} />
+      <View style={estilos.informacoes}>
         <View>
-          <Text style={styles.nome}>{nome}</Text>
-          <Estrelas
-            quantidade={estrelas}
-            grande={selecionado}
-            editavel={selecionado}
-          />
+          <Text style={estilos.nome}>{nome}</Text>
+          <Estrelas quantidade={estrelas} />
         </View>
-        <Text style={styles.distancia}>{distanciaTexto}</Text>
+        <Text style={estilos.distancia}>{distanciaTexto}</Text>
       </View>
     </TouchableOpacity>
   );
 }
 
-const styles = StyleSheet.create({
-  CardView: {
-    backgroundColor: '#E6E6E6',
+const estilos = StyleSheet.create({
+  cartao: {
+    backgroundColor: '#F6F6F6',
     marginVertical: 8,
     marginHorizontal: 16,
     borderRadius: 6,
     flexDirection: 'row',
-    // IOS
+
+    // Android
+    elevation: 4,
+
+    // iOS
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -50,32 +51,28 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
-    // Android
-    elevation: 5,
   },
   imagem: {
-    width: 50,
-    height: 50,
+    width: 48,
+    height: 48,
     borderRadius: 6,
     marginVertical: 16,
     marginLeft: 16,
   },
-  informacoesView: {
+  informacoes: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginLeft: 8,
-    marginRight: 16,
     marginVertical: 16,
+    marginRight: 16,
   },
   nome: {
-    color: '#000',
     fontSize: 14,
-    lineHeight: 16,
+    lineHeight: 22,
     fontWeight: 'bold',
   },
   distancia: {
-    color: '#555',
     fontSize: 12,
     lineHeight: 19,
   },
