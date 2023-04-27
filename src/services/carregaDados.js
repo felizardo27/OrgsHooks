@@ -1,10 +1,10 @@
-import produtores from "../mocks/produtores";
-import textos from "../mocks/textos";
+import produtores from '../mocks/produtores';
+import textos from '../mocks/textos';
 
 export const carregaProdutores = () => {
-    return produtores;
-}
+  return produtores;
+};
 
 export const carregaTextos = () => {
-    return textos;
-}
+  return textos;
+};
