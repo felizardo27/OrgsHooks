@@ -28,7 +28,7 @@ export default function Produtores({melhoresProdutores}) {
         <Produtor
           {...item}
           aoPressionar={() => {
-            navigation.navigate('Produtor');
+            navigation.navigate('Produtor', item);
           }}
         />
       )}
