@@ -15,5 +15,6 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: '#FFF',
+    color: '#000',
   },
 });
