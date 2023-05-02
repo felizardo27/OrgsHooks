@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 
 export default function ProdutorRotas({componentePrincipal = Home}) {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="HomeScreen" component={componentePrincipal} />
       <Stack.Screen name="Produtor" component={Produtor} />
     </Stack.Navigator>

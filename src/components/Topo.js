@@ -4,10 +4,12 @@ import Texto from './Texto';
 import Gradiente from '../assets/gradiente.svg';
 import topo from '../assets/topo.png';
 import VoltarSVG from '../assets/voltar.svg';
+import {useNavigation} from '@react-navigation/native';
 const largura = Dimensions.get('screen').width;
 const ALTURA_PADRAO = 270;
 
 export default function Topo({titulo, imagem = topo, altura = ALTURA_PADRAO}) {
+  const navigate = useNavigation();
   const styles = funcaoEstilos(altura);
   return (
     <>
@@ -18,7 +20,9 @@ export default function Topo({titulo, imagem = topo, altura = ALTURA_PADRAO}) {
         style={styles.gradiente}
       />
       <Texto style={styles.titulo}>{titulo}</Texto>
-      <TouchableOpacity onPress={() => {}} style={styles.botaoVoltar}>
+      <TouchableOpacity
+        onPress={() => navigate.goBack()}
+        style={styles.botaoVoltar}>
         <VoltarSVG color="white" style={styles.voltar} />
       </TouchableOpacity>
     </>
