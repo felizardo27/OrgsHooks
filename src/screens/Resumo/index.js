@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: '#000',
   },
   topoVoltar: {
     width: 24,
