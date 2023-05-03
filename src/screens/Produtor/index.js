@@ -19,7 +19,6 @@ export default function Produtor() {
             <Image source={imagem} style={styles.produtorImage} />
             <Text style={styles.produtor}>{nome}</Text>
           </View>
-          <Text style={styles.descricao}>{cestas[0].detalhes.descricao}</Text>
           <Text style={styles.cestas}>{tituloCestas}</Text>
         </View>
       </>
@@ -60,10 +59,6 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     fontWeight: 'bold',
     marginLeft: 16,
-  },
-  descricao: {
-    color: '#464646',
-    marginTop: 15,
   },
   cestas: {
     color: '#464646',
