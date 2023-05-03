@@ -18,7 +18,15 @@ export default function AppRotas() {
             if (route.name === 'Melhores Produtores') {
               Icon = CoracaoIcon;
             }
-            return <Icon color={color} />;
+            return <Icon color={color} width={25} height={25} />;
+          },
+          tabBarLabelStyle: {
+            fontSize: 12,
+            marginVertical: 8,
+          },
+          tabBarStyle: {
+            height: 60,
+            paddingVertical: 8,
           },
           headerShown: false,
           tabBarActiveTintColor: '#2A9F85',

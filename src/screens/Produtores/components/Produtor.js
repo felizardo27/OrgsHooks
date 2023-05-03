@@ -68,11 +68,13 @@ const estilos = StyleSheet.create({
     marginRight: 16,
   },
   nome: {
+    color: '#000',
     fontSize: 14,
     lineHeight: 22,
     fontWeight: 'bold',
   },
   distancia: {
+    color: '#aaa',
     fontSize: 12,
     lineHeight: 19,
   },

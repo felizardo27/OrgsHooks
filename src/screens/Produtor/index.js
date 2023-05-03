@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   descricao: {
+    color: '#464646',
     marginTop: 15,
   },
   cestas: {
